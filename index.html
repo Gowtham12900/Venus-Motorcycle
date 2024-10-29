@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Home - Venus</title>
+      <link rel="stylesheet" href="Assets/Bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="Assets/CSS/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="Assets/CSS/service-card.css">
+      <link rel="stylesheet" href="Assets/CSS/testimonial.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+         <div class="container-fluid">
+             <a class="navbar-brand" href="#"><img class="venus-logo" src="Assets/Images/Logo/Venus Logo.png"></a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                 <ul class="navbar-nav max-auto mb-2 mb-lg-0">
+                     <li class="nav-item mx-4">
+                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="about.html">About</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="services.html">Services</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="gallery.html">Gallery</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="contact.html">Contact</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                        <a class="nav-link" href="message.html">Booking Status</a>
+                     </li>
+                     <li class="nav-item dropdown mx-4">
+                         <a id="userLogin" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             User Login
+                         </a>
+                         <ul class="dropdown-menu">
+                             <li><a id="authLink1" class="dropdown-item" href="signin.html">Sign In</a></li>
+                             <li><a id="authLink2" class="dropdown-item" href="register.html">Register</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+
+     <script>
+      fetch('/check-login-status')
+      .then(response => response.json())
+      .then(data => {
+          const userLogin = document.getElementById('userLogin');
+          const authLink1 = document.getElementById('authLink1');
+          const authLink2 = document.getElementById('authLink2');
+          
+          if (data.loggedIn) {
+              userLogin.innerText = data.username;
+              userLogin.href = "#"; 
+
+              authLink1.innerText = 'Logout';
+              authLink1.href = '/logout'; 
+              authLink2.style.display = 'none';
+          }
+      });
+  </script>
+
+      <br>
+      <div class="index-banner">
+         <img src="Assets/Images/Index/Venus Banner.jpg" alt="Venus Hero Img">
+      </div>
+      <br>
+      <div data-aos="fade-up">
+         <h1 class="text-center"><b>About</b> <span style="color: #EC8305;"><b>Venus</b></span></h1>
+      </div>
+      <br>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-6 d-flex align-items-start mb-4 mb-md-0">
+               <img src="Assets/Images/Index/Venus About.jpg" class="img-fluid" alt="Venus About">
+            </div>
+            <div class="col-md-6 d-flex align-items-start">
+               <div style="text-align: justify;">
+                  <h2>Our <span style="color: #EC8305;">Services</span></h2>
+                  <ul>
+                     <li><strong>General Service :</strong> A thorough inspection to ensure your bike's performance.</li>
+                     <li><strong>Oil Change :</strong> Regular oil changes to maintain engine health and improve longevity.</li>
+                     <li><strong>Water Wash :</strong> Complete cleaning and washing to keep your bike spotless.</li>
+                     <li><strong>Brake Inspection and Repair :</strong> Ensuring your bike's braking system is responsive.</li>
+                     <li><strong>Chain Lubrication :</strong> Smooth riding with proper chain care and alignment.</li>
+                     <li><strong>Tire Pressure :</strong> Accurate tire pressure checks and alignment for safe handling.</li>
+                  </ul>
+                  <h2>Why <span style="color: #EC8305;">Choose Us ?</span></h2>
+                  <ul>
+                     <li><strong>Technicians :</strong> Our team of experts brings years of experience to the table. We have deep knowledge of a wide range of motorcycle brands and models, ensuring that no matter what you ride, you're in capable hands.</li>
+                     <li><strong>Customer-Centric Approach :</strong> We place great importance on customer satisfaction. Every visit to Venus Motorcycle is an opportunity for us to build trust, provide clear communication, and offer expert recommendations tailored to your motorcycle’s condition.</li>
+                     <li><strong>State-of-the-Art Tools :</strong> Equipped with the latest tools and diagnostic equipment, we can quickly identify and resolve any issues your bike may be facing. This means less downtime for you and more time enjoying the open road.</li>
+                  </ul>
+                  <br>
+                  <div class="d-flex justify-content-center">
+                     <a href="about.html">
+                     <button class="btn btn-warning btn-md"><b>More About <span><i class="fa fa-arrow-right" aria-hidden="true"></i></span></b></button>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br><br><br>
+      <div data-aos="fade-up">
+         <h1 class="text-center"><b>Our</b> <span style="color: #EC8305;"><b>Services</b></span></h1>
+      </div>
+      <div class="container text-center">
+         <div class="row">
+            <div class="col">
+               <div data-aos="flip-left" class="e-card playing">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="infotop">
+                     <h3><b style="color: #F3C623;">General Service</b></h3>
+                     <br>
+                     <div>
+                        <a href="services.html"><button class="btn btn-danger btn-md"><b>Book Now</b></button></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div data-aos="flip-left" class="e-card playing">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="infotop">
+                     <h3><b style="color: #F3C623;">Oil Change</b></h3>
+                     <br>
+                     <div>
+                        <a href="services.html"><button class="btn btn-danger btn-md"><b>Book Now</b></button></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div data-aos="flip-left" class="e-card playing">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="infotop">
+                     <h3><b style="color: #F3C623;">Water Wash</b></h3>
+                     <br>
+                     <div>
+                        <a href="services.html"><button class="btn btn-danger btn-md"><b>Book Now</b></button></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div  data-aos="flip-left" class="e-card playing">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="infotop">
+                     <h3><b style="color: #F3C623;">Chain Lubrication</b></h3>
+                     <br>
+                     <div>
+                        <a href="services.html"><button class="btn btn-danger btn-md"><b>Book Now</b></button></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div data-aos="flip-left" class="e-card playing">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="infotop">
+                     <h3><b style="color: #F3C623;">Tire Pressure</b></h3>
+                     <br>
+                     <div>
+                        <a href="services.html"><button class="btn btn-danger btn-md"><b>Book Now</b></button></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br><br>
+      <div data-aos="fade-up">
+         <h1 class="text-center"><b>customer</b> <span style="color: #EC8305;"><b>Testimonial</b></span></h1>
+      </div>
+      <br>
+      <div class="container py-5">
+         <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+               <div class="card">
+                  <div class="card-body px-4 py-5">
+                     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                           <div class="carousel-item active">
+                              <div class="row d-flex justify-content-center">
+                                 <div class="col-lg-10 col-xl-8">
+                                    <div class="row">
+                                       <div class="col-lg-4 d-flex justify-content-center">
+                                          <img src="Assets/Images/Logo/User.png" class="rounded-circle shadow-1 mb-4 mb-lg-0" alt="Sam's avatar" width="150" height="150" />
+                                       </div>
+                                       <div class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                          <h4 class="mb-4"><b>Sam</b></h4>
+                                          <p class="mb-0 pb-3">
+                                             <b>Venus Motorcycle</b> provided top-notch service, bringing my bike back to life in no time!
+                                          </p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="carousel-item">
+                              <div class="row d-flex justify-content-center">
+                                 <div class="col-lg-10 col-xl-8">
+                                    <div class="row">
+                                       <div class="col-lg-4 d-flex justify-content-center">
+                                          <img src="Assets/Images/Logo/User.png" class="rounded-circle shadow-1 mb-4 mb-lg-0" alt="Gowtham's avatar" width="150" height="150" />
+                                       </div>
+                                       <div class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                          <h4 class="mb-4"><b>Gowtham</b></h4>
+                                          <p style="text-align: justify;" class="mb-0 pb-3">
+                                             I can't recommend <b>Venus Motorcycle</b> enough—fast, reliable, and always a great experience!
+                                          </p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="carousel-item">
+                              <div class="row d-flex justify-content-center">
+                                 <div class="col-lg-10 col-xl-8">
+                                    <div class="row">
+                                       <div class="col-lg-4 d-flex justify-content-center">
+                                          <img src="Assets/Images/Logo/User.png" class="rounded-circle shadow-1 mb-4 mb-lg-0" alt="Saravana's avatar" width="150" height="150" />
+                                       </div>
+                                       <div class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                          <h4 class="mb-4"><b>Saravana</b></h4>
+                                          <p style="text-align: justify;" class="mb-0 pb-3">
+                                             The team at <b>Venus Motorcycle</b> is incredibly knowledgeable and treated my bike like their own!
+                                          </p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer class="bg-dark text-white pt-4">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">About Us</h5>
+                  <p style="text-align: justify;">Venus Motorcycle is your bike service company, providing a wide range of services for motorcycle maintenance and repair. The company focuses on offering high-quality service through experienced technicians and customer-centric solutions.</p>
+               </div>
+               <div  class="col-md-3">
+                  <h5 style="color: #EC8305;">Services</h5>
+                  <ul  class="list-unstyled">
+                     <li><a href="#" style="text-decoration: none;" class="text-white">General Service</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Oil Change</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Water Wash</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Chain Lubrication</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Tire Pressure</a></li>
+                  </ul>
+               </div>
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">Quick Links</h5>
+                  <ul class="list-unstyled">
+                     <li><a href="index.html" style="text-decoration: none;" class="text-white">Home</a></li>
+                     <li><a href="about.html" style="text-decoration: none;" class="text-white">About</a></li>
+                     <li><a href="services.html" style="text-decoration: none;" class="text-white">Services</a></li>
+                     <li><a href="gallery.html" style="text-decoration: none;" class="text-white">Gallery</a></li>
+                     <li><a href="contact.html" style="text-decoration: none;" class="text-white">Contact</a></li>
+                  </ul>
+               </div>
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">Contact</h5>
+                  <p>
+                     403, saravanampatty<br>
+                     Phone: 9360248850<br>
+                     Email: info.venusmotors@gmail.com
+                  </p>
+               </div>
+            </div>
+            <div class="text-center py-3">
+               <p>&copy; 2024 <b style="color: #EC8305;">Venus</b>. All rights reserved.</p>
+            </div>
+         </div>
+      </footer>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+      <script> AOS.init(); </script>
+      <script src="Assets/Bootstrap/js/bootstrap.bundle.js"></script>
+   </body>
+</html>

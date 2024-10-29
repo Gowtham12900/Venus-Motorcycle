@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-bs-theme="blue-theme">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - Venus</title>
+  <!--favicon-->
+  <link rel="icon" href="assets/images/Logo/avatar.png" type="image/png">
+  <!-- loader-->
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+
+  <!--plugins-->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
+  <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+  <!--bootstrap css-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <!--main css-->
+  <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+  <link href="sass/main.css" rel="stylesheet">
+  <link href="sass/responsive.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+
+<!--start header-->
+<header class="top-header">
+  <nav class="navbar navbar-expand align-items-center gap-4">
+    <div class="btn-toggle">
+      <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
+    </div>
+    <div class="search-bar flex-grow-1">
+      <div class="position-relative">
+       
+        <div class="search-popup p-3">
+          <div class="card rounded-4 overflow-hidden">
+            <div class="card-body search-content">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+      <li>
+        <div class="notify-list"></div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="javascrpt:;" class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
+           <img src="../Assets/Images/Logo/Venus Logo.png" class="rounded-circle p-1 border" width="45" height="45" alt="">
+        </a>
+        <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
+          <a class="dropdown-item  gap-2 py-2" href="javascript:;">
+            <div class="text-center">
+              <img src="../Assets/Images/Logo/Venus Logo.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
+                alt="">
+              <h5 class="user-name mb-0 fw-bold">Hello, Admin</h5>
+            </div>
+          </a>
+          
+          <hr class="dropdown-divider">
+          <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="index.html"><i
+          class="material-icons-outlined">power_settings_new</i>Logout</a>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+</header>
+<!--end top header-->
+
+
+<!--start sidebar-->
+<aside class="sidebar-wrapper" data-simplebar="true">
+  <div class="sidebar-header">
+    <div class="logo-icon">
+      <img src="../Assets/Images/Logo/Venus Logo.png" style="width: 55px;" class="logo-img" alt="venus Logo">
+    </div>
+    <div class="logo-name flex-grow-1">
+      <h4 class="mb-0 text-light"><b class="text-warning">VENUS</b></h5>
+    </div>
+    <div class="sidebar-close">
+      <span class="material-icons-outlined">close</span>
+    </div>
+  </div>
+  <div class="sidebar-nav">
+      <!--navigation-->
+      <ul class="metismenu" id="sidenav">
+        <li>
+          <a href="users.html">
+            <div class="parent-icon"><i class="material-icons-outlined">person</i>
+            </div>
+            <div class="menu-title">User Details</div>
+          </a>
+        </li>
+        
+        <li>
+          <a href="add_services.html">
+            <div class="parent-icon"><i class="material-icons-outlined">build</i>
+            </div>
+            <div class="menu-title">Services</div>
+          </a>
+        </li>
+
+        <li>
+          <a href="bookings.html">
+            <div class="parent-icon"><i class="material-icons-outlined">event</i>
+            </div>
+            <div class="menu-title">Booking Services</div>
+          </a>
+        </li>
+        
+        <li>
+          <a href="contact.html">
+            <div class="parent-icon"><i class="material-icons-outlined">contact_phone</i>
+            </div>
+            <div class="menu-title">Contact</div>
+          </a>
+        </li>
+
+        <li>
+          <a href="gallery_update.html">
+            <div class="parent-icon"><i class="material-icons-outlined">photo_library</i>
+            </div>
+            <div class="menu-title">Gallery Update</div>
+          </a>
+        </li>
+
+        <li>
+          <a href="index.html">
+            <div class="parent-icon"><i class="material-icons-outlined">logout</i>
+            </div>
+            <div class="menu-title">Sign Out</div>
+          </a>
+        </li>
+       </ul>
+      <!--end navigation-->
+  </div>
+</aside>
+<!--end sidebar-->
+
+<style>
+  
+  .card
+  {
+    background-color: #024CAA !important;
+  }
+  .table>:not(caption)>*>* 
+  {
+    background-color: #024CAA !important;
+    color: #fff ;
+  }
+  .table-bordered td, 
+        .table-bordered th {
+            border: 2px solid #fff;
+        }
+        .search-container {
+            position: relative;
+        }
+
+        
+</style>
+  <!--start main wrapper-->
+  <main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+      
+      <div class="card">
+        <div class="card-body">
+            <h3><b class="text-warning">User Contact Details</b></h3>
+            <br>
+            <div class="table-responsive">
+              <b><table id="table-to-print" style="text-align: center;" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody id="contactsTable">
+                </tbody>
+            </table></b>
+            
+            
+            </div>
+        </div>
+    </div>
+				
+    <script>
+      fetch('/contact')
+          .then(response => response.json())
+          .then(data => {
+              const contactsTable = document.getElementById('contactsTable');
+              contactsTable.innerHTML = '';
+              data.forEach((contact, index) => {
+                  const row = `<tr>
+                      <td>${index + 1}</td> <!-- Updated index -->
+                      <td>${contact.name}</td>
+                      <td>${contact.phone}</td>
+                      <td>${contact.mail}</td>
+                      <td>${contact.message}</td>
+                  </tr>`;
+                  contactsTable.innerHTML += row;
+              });
+          })
+          .catch(error => {
+              console.error('Error fetching Contacts:', error);
+          });
+  </script>
+  
+
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+    <!--start overlay-->
+    <div class="overlay btn-toggle"></div>
+    <!--end overlay-->
+
+  <!--bootstrap js-->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <!--plugins-->
+  <script src="assets/js/jquery.min.js"></script>
+  <!--plugins-->
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
+  <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>

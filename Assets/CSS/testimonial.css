@@ -1,0 +1,17 @@
+.carousel-indicators button {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50%;
+    background-color: #091057 !important;
+    border: none;
+}
+
+.carousel-indicators button.active {
+    background-color: #EC8305 !important;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}

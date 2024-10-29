@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Services - Venus</title>
+      <link rel="stylesheet" href="Assets/Bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="Assets/CSS/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="Assets/CSS/service-card.css">
+      <link rel="stylesheet" href="Assets/CSS/testimonial.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+         <div class="container-fluid">
+             <a class="navbar-brand" href="#"><img class="venus-logo" src="Assets/Images/Logo/Venus Logo.png"></a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                 <ul class="navbar-nav max-auto mb-2 mb-lg-0">
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="about.html">About</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link active" href="services.html">Services</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="gallery.html">Gallery</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="contact.html">Contact</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                        <a class="nav-link" href="message.html">Booking Status</a>
+                     </li>
+                     <li class="nav-item dropdown mx-4">
+                         <a id="userLogin" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             User Login
+                         </a>
+                         <ul class="dropdown-menu">
+                             <li><a id="authLink1" class="dropdown-item" href="signin.html">Sign In</a></li>
+                             <li><a id="authLink2" class="dropdown-item" href="register.html">Register</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+
+     <script>
+      fetch('/check-login-status')
+      .then(response => response.json())
+      .then(data => {
+          const userLogin = document.getElementById('userLogin');
+          const authLink1 = document.getElementById('authLink1');
+          const authLink2 = document.getElementById('authLink2');
+          
+          if (data.loggedIn) {
+              userLogin.innerText = data.username;
+              userLogin.href = "#";
+              authLink1.innerText = 'Logout';
+              authLink1.href = '/logout';
+              authLink2.style.display = 'none';
+          }
+      });
+
+
+      document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const loginStatus = await fetch('/check-login-status');
+    const loginData = await loginStatus.json();
+
+    if (!loginData.loggedIn) {
+        alert('Please log in to submit a booking.');
+        window.location.href = '/signin.html';
+        return;
+    }
+
+    const formData = new FormData(e.target);
+    const bookingData = {
+        name: formData.get('name'),
+        mobile: formData.get('mobile'),
+        service: formData.get('service'),
+        serviceTime: formData.get('service-time')
+    };
+
+    try {
+        const response = await fetch('/add-booking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookingData)
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert('Booking added successfully');
+        } else {
+            alert('Error adding booking');
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+});
+
+  </script>
+  <style>
+   .form-bg
+   {
+      background-color: #024CAA;
+   }
+  </style>
+      <br>
+      <div data-aos="fade-up">
+         <h1 class="text-center"><b>Book</b> <span style="color: #EC8305;"><b>Services</b></span></h1>
+      </div>
+      <br>
+      <div style="padding-top: 20px; padding-bottom: 20px; max-width: 500px; margin: auto; width:90vw; border-radius: 5px;" class="container form-bg text-center"> <!-- Set max-width for the container -->
+         <form id="bookingForm">
+           <marquee><h5 class="text-warning text-center"><b>Note : The Name Must be Your Username Only</b></h5></marquee>
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="text" class="form-control no-border" id="floatingPassword1" name="name" placeholder="Name" required>
+                        <label for="floatingPassword1">Name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="number" class="form-control no-border" id="floatingPassword2" name="mobile" placeholder="Mobile Number" required>
+                        <label for="floatingPassword2">Mobile Number</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <select class="form-select" aria-label="Select Venus Services" id="floatingSelect" name="service" required>
+                            <option selected disabled>To Select the Venus Services</option>
+                        </select>
+                        
+                        <label for="floatingSelect">Select Service</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="date" class="form-control no-border" id="service-time" name="service-time" placeholder="Choose Time" required>
+                        <label for="service-time">Choose Date</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-warning btn-lg">Add Booking</button>
+            </div>
+        </form>
+     </div>
+     <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+          try {
+              const response = await fetch('/services-list');
+              const services = await response.json();
+              const selectElement = document.getElementById('floatingSelect');
+              services.forEach(service => {
+                  const option = document.createElement('option');
+                  option.value = service._id; 
+                  option.textContent = service.name; 
+                  selectElement.appendChild(option);
+              });
+          } catch (error) {
+              console.error('Error fetching services:', error);
+          }
+      });
+  </script>
+
+  
+<script>
+   document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const loginStatus = await fetch('/check-login-status');
+    const loginData = await loginStatus.json();
+
+    if (!loginData.loggedIn) {
+        alert('Please Login to Submit a Booking.');
+        window.location.href = '/login';
+        return;
+    }
+
+    const formData = new FormData(e.target);
+    const bookingData = {
+        name: formData.get('name'),
+        mobile: formData.get('mobile'),
+        service: formData.get('service'),
+        serviceTime: formData.get('service-time')
+    };
+
+    try {
+        const response = await fetch('/add-booking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookingData)
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert('Booking added successfully');
+        } else {
+            alert('Error adding booking');
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+});
+
+    const selectElement = document.getElementById('floatingSelect');
+    
+
+    services.forEach(service => {
+        const option = document.createElement('option');
+        option.value = service.name;
+        option.textContent = service.name;
+        selectElement.appendChild(option);
+    });
+</script>
+
+
+  
+     <br><br>
+      <footer class="bg-dark text-white pt-4">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">About Us</h5>
+                  <p style="text-align: justify;">Venus Motorcycle is your bike service company, providing a wide range of services for motorcycle maintenance and repair. The company focuses on offering high-quality service through experienced technicians and customer-centric solutions.</p>
+               </div>
+               <div  class="col-md-3">
+                  <h5 style="color: #EC8305;">Services</h5>
+                  <ul  class="list-unstyled">
+                     <li><a href="#" style="text-decoration: none;" class="text-white">General Service</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Oil Change</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Water Wash</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Chain Lubrication</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Tire Pressure</a></li>
+                  </ul>
+               </div>
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">Quick Links</h5>
+                  <ul class="list-unstyled">
+                     <li><a href="index.html" style="text-decoration: none;" class="text-white">Home</a></li>
+                     <li><a href="about.html" style="text-decoration: none;" class="text-white">About</a></li>
+                     <li><a href="services.html" style="text-decoration: none;" class="text-white">Services</a></li>
+                     <li><a href="gallery.html" style="text-decoration: none;" class="text-white">Gallery</a></li>
+                     <li><a href="contact.html" style="text-decoration: none;" class="text-white">Contact</a></li>
+                  </ul>
+               </div>
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">Contact</h5>
+                  <p>
+                     403, saravanampatty<br>
+                     Phone: 9360248850<br>
+                     Email: info.venusmotors@gmail.com
+                  </p>
+               </div>
+            </div>
+            <div class="text-center py-3">
+               <p>&copy; 2024 <b style="color: #EC8305;">Venus</b>. All rights reserved.</p>
+            </div>
+         </div>
+      </footer>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+      <script> AOS.init(); </script>
+      <script src="Assets/Bootstrap/js/bootstrap.bundle.js"></script>
+   </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="../Assets/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="d-flex vh-100 justify-content-center align-items-center">
+       
+        <form method="POST" action="/forgot_password" class="container loginform" style="max-width: 450px;">
+            <img class="loginimg" src="../Assets/Images/Logo/Venus Logo.png">
+            <br>
+            <h4 class="title">Forgot Password</h4>
+            <br>
+            <div class="form-floating mb-3" style="max-width: 400px; margin: 0 auto;">
+                <input type="text" class="form-control" id="Username" name="username" placeholder="Enter your username" required>
+                <label for="Username">Your Secret Code</label>
+            </div>
+            
+            <div class="form-floating mb-3" style="max-width: 400px; margin: 0 auto;">
+                <input type="password" class="form-control" id="password" name="newPassword" placeholder="New Password" required>
+                <label for="password">New Password</label>
+                <span class="position-absolute top-50 end-0 translate-middle-y me-3" onclick="toggleNewPassword()">
+                    <i class="fas fa-eye" id="toggleIcon"></i>
+                </span>
+            </div>
+            
+            <div class="form-floating" style="max-width: 400px; margin: 0 auto;">
+                <input type="password" class="form-control" id="confirmpassword" name="confirmNewPassword" placeholder="Confirm New Password" required>
+                <label for="confirmpassword">Confirm New Password</label>
+                <span class="position-absolute top-50 end-0 translate-middle-y me-3" onclick="toggleConfirmPassword()">
+                    <i class="fas fa-eye" id="toggleIconc"></i>
+                </span>
+            </div>
+            
+            <br>
+            <div class="d-flex justify-content-center mb-3">
+                <button type="submit" class="btn btn-lg"><b>Change Password</b> &nbsp; <span><i class="fa fa-key"></i></span></button>
+            </div>
+            
+            <div class="text-center">
+                <a href="index.html" style="text-decoration: none; color: #ffff;">
+                    <h5 class="frgt_pwd"><b>Back to Login</b> &nbsp;<span><i class="fa fa-sign-in"></i></span></h5>
+                </a>
+            </div>
+        </form>
+        
+    </div>
+    <script>
+        function toggleNewPassword() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = document.getElementById("toggleIcon");
+            
+           
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+        </script>
+
+<script>
+    function toggleConfirmPassword() { 
+        const passwordField = document.getElementById("confirmpassword");
+        const toggleIconc = document.getElementById("toggleIconc");
+        
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIconc.classList.remove("fa-eye");
+            toggleIconc.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            toggleIconc.classList.remove("fa-eye-slash");
+            toggleIconc.classList.add("fa-eye");
+        }
+    }
+    </script>
+        
+</body>
+</html>

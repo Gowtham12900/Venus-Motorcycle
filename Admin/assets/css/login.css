@@ -1,0 +1,54 @@
+body
+{
+    background-image: url("../images/login.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title
+{
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
+}
+
+.loginform {
+    background-color: rgba(170, 78, 2, 0.8);
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 1.5%;
+    width: 90vw;
+    max-width: 450px;
+}
+
+.btn
+{
+    background-color: #2a2428;
+    color: #fff;
+}
+
+.btn:hover
+{
+    background-color:#537e87;
+    color: #000;
+}
+.loginimg
+{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .loginform {
+        padding: 20px;
+    }
+}
+
+.frgt_pwd:hover
+{
+color: #BFECFF;
+}
+

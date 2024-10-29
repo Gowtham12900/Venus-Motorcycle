@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Message - Venus</title>
+      <link rel="stylesheet" href="Assets/Bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="Assets/CSS/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="Assets/CSS/service-card.css">
+      <link rel="stylesheet" href="Assets/CSS/testimonial.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+         <div class="container-fluid">
+             <a class="navbar-brand" href="#"><img class="venus-logo" src="Assets/Images/Logo/Venus Logo.png"></a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                 <ul class="navbar-nav max-auto mb-2 mb-lg-0">
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="about.html">About</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="services.html">Services</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="gallery.html">Gallery</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                         <a class="nav-link" href="contact.html">Contact</a>
+                     </li>
+                     <li class="nav-item mx-4">
+                        <a class="nav-link active" href="message.html">Booking Status</a>
+                    </li>
+                     <li class="nav-item dropdown mx-4">
+                         <a id="userLogin" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             User Login
+                         </a>
+                         <ul class="dropdown-menu">
+                             <li><a id="authLink1" class="dropdown-item" href="signin.html">Sign In</a></li>
+                             <li><a id="authLink2" class="dropdown-item" href="register.html">Register</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+     <script>
+      fetch('/check-login-status')
+      .then(response => response.json())
+      .then(data => {
+          const userLogin = document.getElementById('userLogin');
+          const authLink1 = document.getElementById('authLink1');
+          const authLink2 = document.getElementById('authLink2');
+          
+          if (data.loggedIn) {
+              userLogin.innerText = data.username;
+              userLogin.href = "#";
+              authLink1.innerText = 'Logout';
+              authLink1.href = '/logout';
+              authLink2.style.display = 'none';
+          }
+      });
+  </script>
+  
+      <br>
+      <div data-aos="fade-up">
+         <h1 class="text-center"><b  style="color: #EC8305;">Booking</b> <b>Status</b></h1>
+      </div>
+      <br>
+               
+     <div class="container">
+        <div class="row">
+            <!-- Previous Booking Card -->
+            <div class="col-lg-6 col-md-8 col-12 mb-3 d-flex justify-content-center">
+                <div class="card" style="background-color: #024CAA; width: 100%; max-width: 400px; padding: 10px;">
+                    <div class="card-body p-2">
+                        <div class="d-flex justify-content-center mb-2">
+                            <h4 style="color: #fff;" class="mb-1"><b class="text-warning">Previous Booking</b></h4>
+                        </div>
+                        <marquee behavior="scroll" direction="up" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();" height="300">
+                            <div id="messageContainerPrevious" class="new-member" style="background-color: #f8f4f4; border-radius: 8px; padding: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                                <div class="d-flex align-items-center">
+                                    <img src="Assets/Images/Logo/Venus Logo.png" alt="Logo" style="width: 40px; height: auto;" class="me-2">
+                                    <div class="d-flex flex-column">
+                                        <div style="font-size: 1em; font-weight: bold; color: #333;" id="previousBookingName">Gowtham <span style="color: #EC8305;">(General Service)</span></div>
+                                        <div style="font-size: 0.9em; color: #024caa; font-weight: bold;" id="previousBookingDate">2024/07/22 16:47:39</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Current Booking Status Card -->
+            <div class="col-lg-6 col-md-8 col-12 mb-3 d-flex justify-content-center">
+                <div class="card" style="background-color: #024CAA; width: 100%; max-width: 400px; padding: 10px;">
+                    <div class="card-body p-2">
+                        <div class="d-flex justify-content-center mb-2">
+                            <h4 style="color: #fff;" class="mb-1"><b class="text-warning">Current Booking Status</b></h4>
+                        </div>
+                        <marquee behavior="scroll" direction="up" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();" height="300">
+                            <div id="messageContainerCurrent" class="new-member" style="background-color: #f8f4f4; border-radius: 8px; padding: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                                <div class="d-flex align-items-center">
+                                    <img src="Assets/Images/Logo/Venus Logo.png" alt="Logo" style="width: 40px; height: auto;" class="me-2">
+                                    <div class="d-flex flex-column">
+                                        <div style="font-size: 1em; font-weight: bold; color: #333;" id="bookingName">Gowtham</div>
+                                        <div style="font-size: 0.9em; color: red; font-weight: bold;" id="bookingStatus">Pending</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+      
+        fetch('/get-user-bookings')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let currentBookingsContent = '';
+                let previousBookingsContent = '';
+    
+               
+                data.currentBookings.forEach(booking => {
+                    currentBookingsContent += `
+                    <div class="marquee-card" style="background-color: #f8f4f4; border-radius: 8px; padding: 5px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        <div class="d-flex align-items-center">
+                            <img src="Assets/Images/Logo/Venus Logo.png" alt="Service Logo" style="width: 40px; height: auto;" class="me-2">
+                            <div class="d-flex flex-column">
+                                <span class="user-name" style="font-weight: bold; color: #333;">${booking.name || 'Unknown'} <span style="color: #EC8305;">(${booking.service || 'Unknown Service'})</span></span>
+                                <span class="service-time" style="color: #024caa; font-weight: bold;">${booking.serviceTime ? new Date(booking.serviceTime).toLocaleString() : 'Unknown Time'}</span>
+                                <span class="status ${booking.status === 'Pending' ? 'text-danger' : (booking.status === 'Ready for delivery' ? 'text-warning' : 'text-success')}" style="font-weight: bold;">${booking.status}</span>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+    
+               
+                const hasNewBookings = data.currentBookings.some(booking => booking.status !== 'Completed');
+    
+                if (!hasNewBookings) {
+                    data.previousBookings.forEach(booking => {
+                        currentBookingsContent += `
+                        <div class="marquee-card">
+                            <div class="d-flex align-items-center">
+                                <img src="Assets/Images/Logo/Venus Logo.png" alt="Service Logo" style="width: 40px; height: auto;" class="me-2">
+                                <div class="d-flex flex-column">
+                                    <span class="user-name" style="font-weight: bold; color: #333;">${booking.name || 'Unknown'} <span style="color: #EC8305;">(${booking.service || 'Unknown Service'})</span></span>
+                                    <span class="service-time" style="color: #024caa; font-weight: bold;">${booking.serviceTime ? new Date(booking.serviceTime).toLocaleString() : 'Unknown Time'}</span>
+                                    <span class="status text-success" style="font-weight: bold;">Completed</span>
+                                </div>
+                            </div>
+                        </div>`;
+                    });
+                } else {
+                    data.previousBookings.forEach(booking => {
+                        previousBookingsContent += `
+                        <div class="marquee-card" >
+                            <div class="d-flex align-items-center">
+                                <img src="Assets/Images/Logo/Venus Logo.png" alt="Service Logo" style="width: 40px; height: auto;" class="me-2">
+                                <div class="d-flex flex-column">
+                                    <span class="user-name" style="font-weight: bold; color: #333;">${booking.name || 'Unknown'} <span style="color: #EC8305;">(${booking.service || 'Unknown Service'})</span></span>
+                                    <span class="service-time" style="color: #024caa; font-weight: bold;">${booking.serviceTime ? new Date(booking.serviceTime).toLocaleString() : 'Unknown Time'}</span>
+                                    <span class="status text-success" style="font-weight: bold;">Completed</span>
+                                </div>
+                            </div>
+                        </div>`;
+                    });
+                }
+    
+                document.getElementById('messageContainerCurrent').innerHTML = currentBookingsContent || '<p>No current bookings found.</p>';
+                document.getElementById('messageContainerPrevious').innerHTML = previousBookingsContent || '<p>No previous bookings found.</p>';
+            })
+            .catch(error => {
+                console.error('Error fetching bookings:', error);
+                document.getElementById('messageContainerPrevious').innerHTML = '<p class="text-center"><b>Sign in to see your <span class="text-danger">Previous Booking</span> status.</b></p>';
+                document.getElementById('messageContainerCurrent').innerHTML = '<p class="text-center"><b>Sign in to see your <span class="text-danger">Current Booking</span> status.</b></p>';
+            });
+    </script>
+    
+    
+
+      <br><br>
+      
+      <br>
+      <footer class="bg-dark text-white pt-4">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">About Us</h5>
+                  <p style="text-align: justify;">Venus Motorcycle is your bike service company, providing a wide range of services for motorcycle maintenance and repair. The company focuses on offering high-quality service through experienced technicians and customer-centric solutions.</p>
+               </div>
+               <div  class="col-md-3">
+                  <h5 style="color: #EC8305;">Services</h5>
+                  <ul  class="list-unstyled">
+                     <li><a href="#" style="text-decoration: none;" class="text-white">General Service</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Oil Change</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Water Wash</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Chain Lubrication</a></li>
+                     <li><a href="#" style="text-decoration: none;" class="text-white">Tire Pressure</a></li>
+                  </ul>
+               </div>
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">Quick Links</h5>
+                  <ul class="list-unstyled">
+                     <li><a href="index.html" style="text-decoration: none;" class="text-white">Home</a></li>
+                     <li><a href="about.html" style="text-decoration: none;" class="text-white">About</a></li>
+                     <li><a href="services.html" style="text-decoration: none;" class="text-white">Services</a></li>
+                     <li><a href="gallery.html" style="text-decoration: none;" class="text-white">Gallery</a></li>
+                     <li><a href="contact.html" style="text-decoration: none;" class="text-white">Contact</a></li>
+                  </ul>
+               </div>
+               <div class="col-md-3">
+                  <h5 style="color: #EC8305;">Contact</h5>
+                  <p>
+                     403, saravanampatty<br>
+                     Phone: 9360248850<br>
+                     Email: info.venusmotors@gmail.com
+                  </p>
+               </div>
+            </div>
+            <div class="text-center py-3">
+               <p>&copy; 2024 <b style="color: #EC8305;">Venus</b>. All rights reserved.</p>
+            </div>
+         </div>
+      </footer>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+      <script> AOS.init(); </script>
+      <script src="Assets/Bootstrap/js/bootstrap.bundle.js"></script>
+   </body>
+</html>
